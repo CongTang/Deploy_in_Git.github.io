@@ -1,1 +1,4 @@
-
+numpy
+pandas as pd
+panel as pn
+plotly
