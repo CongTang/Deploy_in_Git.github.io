@@ -1,4 +1,6 @@
 numpy
-pandas as pd
-panel as pn
+pandas
+panel
 plotly
+holoviews
+hvplot
