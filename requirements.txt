@@ -1,8 +1,2 @@
-numpy
 pandas
 panel
-plotly
-holoviews
-hvplot
-datetime
-
