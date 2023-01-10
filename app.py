@@ -3,33 +3,27 @@ pn.extension(notifications=True)
 
 import pandas as pd
 
-
-txt = pn.widgets.TextInput()
-check = pn.widgets.Button(name= 'check',button_type = 'success')
-add = pn.widgets.Button(name= 'add',button_type = 'success')
-
-def check_click(event):
-    df = pd.read_csv('user_list.csv')
-    if txt.value in list(df['User']):
-        pn.state.notifications.clear()
-        pn.state.notifications.success('name checked successful')
+file_input = pn.widgets.FileInput()
+update = pn.widgets.Button(name= 'check',button_type = 'success')
+table = pn.widgets.Tabulator()
+def update_click(event):
+    if file_input.value != None:
+        try:
+            pn.state.notifications.info('reading')
+            table.value = pd.read_excel(file_input.value)
+            pn.state.notifications.clear()
+            pn.state.notifications.success('successful')
+        except Exception as e:
+            pn.state.notifications.clear()
+            pn.state.notifications.warning(f'{e}')
     else:
         pn.state.notifications.clear()
-        pn.state.notifications.warning('name checked failed.')
-def add_click(event):
-    df = pd.read_csv('user_list.csv')
-    try:
-        df.loc[len(df)] = txt.value
-        pn.state.notifications.clear()
-        pn.state.notifications.success('name added successful')
-    except Exception as e:
-        pn.state.notifications.clear()
-        pn.state.notifications.warning(f'name checked failed./n{e}')
-check.on_click(check_click)        
-add.on_click(add_click) 
+        pn.state.notifications.warning(f'No File')        
+update.on_click(update_click)
+        
 pn.Column(
-    txt,
     pn.Row(
-    check,add
-    )
+    file_input,update
+    ),
+    table
 ).servable();
