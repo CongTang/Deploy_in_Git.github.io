@@ -4,5 +4,5 @@ openpyxl
 numpy
 opencv-python
 holoviews
-PIL
+Pillow 
 io
