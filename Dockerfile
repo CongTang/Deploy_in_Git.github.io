@@ -14,4 +14,4 @@ COPY . ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the web service on container startup.
-CMD panel serve --address="0.0.0.0" --port=$PORT app.py --allow-websocket-origin=app-name.herokuapp.com
+CMD panel serve --address="0.0.0.0" --port=$PORT app.py --allow-websocket-origin=panel-trial.herokuapp.com
