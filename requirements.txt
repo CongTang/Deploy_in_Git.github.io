@@ -1,3 +1,8 @@
 pandas
 panel
 openpyxl
+numpy
+opencv-python
+holoviews
+PIL
+io
